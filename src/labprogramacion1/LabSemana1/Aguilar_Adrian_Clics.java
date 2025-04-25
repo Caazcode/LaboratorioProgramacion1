@@ -15,7 +15,7 @@ public class Aguilar_Adrian_Clics {
         double Isv = 0.16;
         double TotalconIsv, promedio, totalsinIsv, TotalFinal;
         
-        promedio = (clics60 * costo60Clics) + (clics100 * costo100Clics) + (clics20 * costo20Clics) / 180;
+        promedio = ((clics60 * costo60Clics) + (clics100 * costo100Clics) + (clics20 * costo20Clics)) / 180;
         
         totalsinIsv = (clics60 * costo60Clics) + (clics100 * costo100Clics) + (clics20 * costo20Clics);
         
