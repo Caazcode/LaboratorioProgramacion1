@@ -74,7 +74,7 @@ public class Aguilar_Adrian_Pagos {
                 horasExtras = 0;
                 break;
             default:
-                System.out.println("Categoría inválida.");
+                System.out.println("error de categoria");
                 return;
         }
 
