@@ -12,6 +12,7 @@ import java.util.Random;
 public class Aguilar_Adrian_Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
+        Random random = new Random();
         int opcion;
 
         do {
@@ -100,7 +101,7 @@ public class Aguilar_Adrian_Main {
             
                 case 4:
                     
-                    Random random = new Random();
+                    
 
                         int numeroRandom = random.nextInt(100) + 1;
                         int intentosUsuario = 10;
