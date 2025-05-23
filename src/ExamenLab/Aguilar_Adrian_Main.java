@@ -42,15 +42,20 @@ public class Aguilar_Adrian_Main {
                             System.out.println("= " + suma);
                         }
                     break;
+                    
+                    
                 case 2:
                     
                     break;
+                    
+                    
                 case 3:
                     
                     String usuario, computadoraJugando, jugarOtra;
                     int numeroComputadora;
 
                     System.out.println("-- Bienvenido al juego de Piedra, Papel o Tijera --");
+                    sc.nextLine();
 
                     do {
 
