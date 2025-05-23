@@ -16,7 +16,7 @@ public class Aguilar_Adrian_Main {
         int opcion;
 
         do {
-            System.out.println("-- MENÚ PRINCIPAL --");
+            System.out.println("-- BIENVENIDO AL MENÚ PRINCIPAL --");
             System.out.println("1. Piramide");
             System.out.println("2. Clave");
             System.out.println("3. Juego Piedra papel o tijera");
