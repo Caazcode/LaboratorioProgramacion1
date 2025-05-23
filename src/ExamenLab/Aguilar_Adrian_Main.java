@@ -18,7 +18,7 @@ public class Aguilar_Adrian_Main {
         do {
             System.out.println("-- MENÚ PRINCIPAL --");
             System.out.println("1. Piramide");
-            System.out.println("2. Opción 2");
+            System.out.println("2. Clave");
             System.out.println("3. Juego Piedra papel o tijera");
             System.out.println("4. Juego Adivina Numero");
             System.out.println("5. Salir");
@@ -46,8 +46,40 @@ public class Aguilar_Adrian_Main {
                     
                 case 2:
                     
-                    break;
+                         sc.nextLine();
+                        String abecedarioMinuscula = "abcdefghijklmnopqrstuvwxyz";
+                        String abecedarioMayuscula = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+                        String fraseUsuario;
+                        String fraseRespuesta = "";
+
+                        System.out.println("-- BIENVENIDO A FRASE EN CLAVE --\n");
+                        System.out.print("Ingresa el mensaje que deseas cifrar o descifrar: ");
+                        fraseUsuario = sc.nextLine();
+
+                        for (int i = 0; i < fraseUsuario.length(); i++) {
+                            char letra = fraseUsuario.charAt(i);
+
+                            if (abecedarioMinuscula.indexOf(letra) != -1) {
+
+                                int posicion = abecedarioMinuscula.indexOf(letra);
+                                int posInversa = 25 - posicion;
+                                fraseRespuesta += abecedarioMinuscula.charAt(posInversa);
+                            } else if (abecedarioMayuscula.indexOf(letra) != -1) {
+
+                                int posicion = abecedarioMayuscula.indexOf(letra);
+                                int posInversa = 25 - posicion;
+                                fraseRespuesta += abecedarioMayuscula.charAt(posInversa);
+                            } else {
+
+                                fraseRespuesta += letra;
+                            }
+                        }
+
+                        System.out.println("Mensaje cifrado/descifrado: " + fraseRespuesta);
                     
+                    
+                    break;
+        
                     
                 case 3:
                     
@@ -142,9 +174,11 @@ public class Aguilar_Adrian_Main {
                 case 5:
                     System.out.println("Saliendo del programa...");
                     break;
+                    
                 default:
                     System.out.println("Opción inválida. Intente nuevamente.");
                     break;
+                    
             }
 
         } while (opcion != 5);
