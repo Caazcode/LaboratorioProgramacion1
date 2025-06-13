@@ -25,12 +25,14 @@ public class Aguilar_Adrian_Jugar extends JFrame {
     JLabel mensaje;
     JLabel contadorOportunidades;
     JTextField campoLetra;
-    JButton botonProbar;
+    JButton botonIntentar;
     JButton botonReiniciar;
+    JButton botonCambiar;
+    JTextArea verPalabras; 
 
     public Aguilar_Adrian_Jugar() {
         setTitle("JUGAR");
-        setSize(600, 400);
+        setSize(600, 500);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
 
@@ -48,8 +50,8 @@ public class Aguilar_Adrian_Jugar extends JFrame {
         campoLetra.setFont(new Font("Arial", Font.PLAIN, 18));
         add(campoLetra);
 
-        botonProbar = new JButton("Intentar");
-        add(botonProbar);
+        botonIntentar = new JButton("Intentar");
+        add(botonIntentar);
 
         contadorOportunidades = new JLabel("Oportunidades: 5");
         add(contadorOportunidades);
@@ -60,17 +62,26 @@ public class Aguilar_Adrian_Jugar extends JFrame {
 
         botonReiniciar = new JButton("Reiniciar");
         botonReiniciar.setEnabled(false);
-        add(botonReiniciar);   
+        add(botonReiniciar);
+
+        botonCambiar = new JButton("Cambiar palabras");
+        add(botonCambiar);
+
+        verPalabras = new JTextArea(5, 40);
+        verPalabras.setEditable(false);
+        add(new JScrollPane(verPalabras));
+
+ 
 
         iniciarJuego();
 
-        botonProbar.addActionListener(new ActionListener() {
+        botonIntentar.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 String entrada = campoLetra.getText().toUpperCase();
                 if (entrada.length() == 1 && Character.isLetter(entrada.charAt(0))) {
                     verificarLetra(entrada.charAt(0));
                 } else {
-                    mensaje.setText("Ingresa solo UNA letra válida.");
+                    mensaje.setText("Ingresa solo una letra válida.");
                 }
                 campoLetra.setText("");
             }
@@ -78,6 +89,24 @@ public class Aguilar_Adrian_Jugar extends JFrame {
 
         botonReiniciar.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
+                iniciarJuego();
+            }
+        });
+
+      
+        botonCambiar.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                String[] nuevasPalabras = new String[10];
+                for (int i = 0; i < nuevasPalabras.length; i++) {
+                    String input = JOptionPane.showInputDialog("Ingrese la palabra nueva deseada " + (i + 1) + ":");
+                    if (input != null && !input.trim().isEmpty()) {
+                        nuevasPalabras[i] = input.trim().toUpperCase();
+                    } else {
+                        i--; 
+                    }
+                }
+                palabrasIniciales = nuevasPalabras;
+                
                 iniciarJuego();
             }
         });
@@ -94,7 +123,7 @@ public class Aguilar_Adrian_Jugar extends JFrame {
         oportunidades = 5;
         actualizarPantalla();
         mensaje.setText("Escribe una letra para adivinar.");
-        botonProbar.setEnabled(true);
+        botonIntentar.setEnabled(true);
         botonReiniciar.setEnabled(false);
     }
 
@@ -109,10 +138,10 @@ public class Aguilar_Adrian_Jugar extends JFrame {
         }
 
         if (acierto) {
-            mensaje.setText("Correcto! Letra encontrada.");
+            mensaje.setText("Correcto! Letra valida.");
         } else {
             oportunidades--;
-            mensaje.setText("Incorrecto. Te quedan " + oportunidades + " vidas.");
+            mensaje.setText("Incorrecto. Te quedan " + oportunidades + " oportunidades.");
         }
 
         if (String.valueOf(palabraOculta).equals(String.valueOf(palabraActual))) {
@@ -136,10 +165,11 @@ public class Aguilar_Adrian_Jugar extends JFrame {
     }
 
     public void terminarJuego() {
-        botonProbar.setEnabled(false);
+        botonIntentar.setEnabled(false);
         botonReiniciar.setEnabled(true);
     }
 
+    
     public static void main(String[] args) {
         SwingUtilities.invokeLater(() -> new Aguilar_Adrian_Jugar().setVisible(true));
     }
