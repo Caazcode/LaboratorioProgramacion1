@@ -60,4 +60,15 @@ public class Sistema {
     
     return null;
 }
+    
+    public static Jugador[] getJugadores() {
+    return jugadores;
+}
+
+    public static int getContador() {
+    return contador;
+}
+
+    
+    
 }

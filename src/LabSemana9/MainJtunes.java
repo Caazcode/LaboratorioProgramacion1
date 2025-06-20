@@ -4,8 +4,9 @@
  */
 package LabSemana9;
 
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-import javax.swing.SwingUtilities;
+
 
 /**
  *
@@ -20,8 +21,8 @@ public class MainJtunes extends javax.swing.JFrame {
     private JPanel panelCanciones;
 
     public MainJtunes() {
-        biblioteca = new Jtunes(100); 
-        initUI();
+        initComponents();         
+    biblioteca = new Jtunes(100); 
     }
 
     
@@ -152,6 +153,16 @@ public class MainJtunes extends javax.swing.JFrame {
 
     private void jButtonVerListaCancionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonVerListaCancionesActionPerformed
         // TODO add your handling code here:
+        
+        
+    if (biblioteca.getCancionesAgregadas() == 0) {
+    JOptionPane.showMessageDialog(this, "Aún no has agregado ninguna canción. Agrega una antes de ver la lista.");
+    return;
+    }    
+        
+    ListaDeCanciones lista = new ListaDeCanciones(biblioteca); 
+    lista.setVisible(true);
+    this.dispose();
         
     }//GEN-LAST:event_jButtonVerListaCancionesActionPerformed
 
